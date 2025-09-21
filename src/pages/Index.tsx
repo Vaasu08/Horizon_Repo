@@ -280,70 +280,68 @@ const Index = () => {
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="absolute top-4 right-4 z-50 pointer-events-auto"
+          className="absolute top-2 sm:top-4 left-2 right-2 sm:right-4 z-50 pointer-events-auto"
         >
-          <div className="flex items-center gap-4">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link to="/news" className="text-white/80 hover:text-white text-sm font-medium transition-colors duration-300">
-              Job News
-            </Link>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link to="/insights" className="text-white/80 hover:text-white text-sm font-medium transition-colors duration-300">
-                Insights
-              </Link>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link to="/linkedin" className="text-white/80 hover:text-white text-sm font-medium transition-colors duration-300">
-              LinkedIn Analyzer
-            </Link>
-            </motion.div>
-            {user ? (
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link to="/profile" className="text-white/80 hover:text-white text-sm font-medium transition-colors duration-300 flex items-center">
-                  <User className="w-5 h-5" />
+          <div className="flex items-center justify-between w-full">
+            {/* Mobile Menu - Show only essential links */}
+            <div className="flex items-center gap-1 sm:gap-4 overflow-x-auto scrollbar-hide">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link to="/news" className="text-white/80 hover:text-white text-xs sm:text-sm font-medium transition-colors duration-300 whitespace-nowrap">
+                  <span className="hidden sm:inline">Job News</span>
+                  <span className="sm:hidden">News</span>
                 </Link>
               </motion.div>
-            ) : (
-              <>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link to="/insights" className="text-white/80 hover:text-white text-xs sm:text-sm font-medium transition-colors duration-300 whitespace-nowrap">
+                  <span className="hidden sm:inline">Insights</span>
+                  <span className="sm:hidden">Insights</span>
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link to="/linkedin" className="text-white/80 hover:text-white text-xs sm:text-sm font-medium transition-colors duration-300 whitespace-nowrap">
+                  <span className="hidden sm:inline">LinkedIn Analyzer</span>
+                  <span className="sm:hidden">LinkedIn</span>
+                </Link>
+              </motion.div>
+            </div>
+            
+            {/* Right side - Auth & Theme */}
+            <div className="flex items-center gap-1 sm:gap-4">
+              {user ? (
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Link to="/login" className="text-white/80 hover:text-white text-sm font-medium transition-colors duration-300">
-                    Login
+                  <Link to="/profile" className="text-white/80 hover:text-white text-xs sm:text-sm font-medium transition-colors duration-300 flex items-center">
+                    <User className="w-4 h-4 sm:w-5 sm:h-5" />
                   </Link>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Link to="/signup" className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/20 hover:bg-white/20 transition-all duration-300">
-                    Sign up
-                  </Link>
-                </motion.div>
-              </>
-            )}
-            <ModeToggle />
+              ) : (
+                <>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Link to="/login" className="text-white/80 hover:text-white text-xs sm:text-sm font-medium transition-colors duration-300">
+                      Login
+                    </Link>
+                  </motion.div>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Link to="/signup" className="px-2 sm:px-4 py-1 sm:py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-xs sm:text-sm font-medium border border-white/20 hover:bg-white/20 transition-all duration-300">
+                      Sign up
+                    </Link>
+                  </motion.div>
+                </>
+              )}
+              <ModeToggle />
+            </div>
           </div>
         </motion.nav>
 
         {/* Hero Section */}
         <div className="relative z-10">
-          <div className="container mx-auto px-4 py-20 min-h-screen flex items-center">
-            <div className="text-center space-y-12 max-w-6xl mx-auto">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 min-h-screen flex items-center">
+            <div className="text-center space-y-8 sm:space-y-10 lg:space-y-12 max-w-6xl mx-auto w-full">
               {/* Badge */}
               <motion.div
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md rounded-full text-white/90 text-sm font-medium border border-white/20"
+                className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white/10 backdrop-blur-md rounded-full text-white/90 text-xs sm:text-sm font-medium border border-white/20"
               >
                 <motion.div
                   animate={{ rotate: 360 }}
@@ -359,14 +357,14 @@ const Index = () => {
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="space-y-6"
+                className="space-y-4 sm:space-y-6"
               >
-                <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.1] sm:leading-tight">
                   <motion.span
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.6 }}
-                    className="block iron-font iron-font-hero"
+                    className="block iron-font iron-font-hero text-2xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl"
                     data-text="HORIZON"
                   >
                     HORIZON
@@ -375,7 +373,7 @@ const Index = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.8 }}
-                    className="block"
+                    className="block text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl"
                   >
                 Discover Your
                   </motion.span>
@@ -383,7 +381,7 @@ const Index = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 1.0 }}
-                    className="block bg-gradient-to-r from-purple-200 via-pink-200 to-white bg-clip-text text-transparent"
+                    className="block bg-gradient-to-r from-purple-200 via-pink-200 to-white bg-clip-text text-transparent text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl"
                   >
                     Perfect Career
                   </motion.span>
@@ -395,7 +393,7 @@ const Index = () => {
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 1.2 }}
-                className="text-xl md:text-2xl lg:text-3xl text-white/80 leading-relaxed max-w-4xl mx-auto font-light"
+                className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 leading-relaxed max-w-4xl mx-auto font-light px-2 sm:px-4"
               >
                 Your AI-powered career discovery platform. Map your skills, explore opportunities, 
                 and get personalized recommendations to navigate your professional journey with confidence.
@@ -406,11 +404,12 @@ const Index = () => {
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 1.4 }}
-                className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8"
+                className="flex flex-col gap-3 sm:gap-4 justify-center items-stretch sm:items-center pt-4 sm:pt-6 px-2 sm:px-4 max-w-md sm:max-w-none mx-auto"
               >
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full sm:w-auto"
                 >
                 <Button 
                   size="lg"
@@ -421,24 +420,25 @@ const Index = () => {
                       setCurrentStep('skills');
                     }
                   }}
-                  className="bg-white text-gray-900 hover:bg-gray-50 font-bold px-12 py-6 rounded-2xl shadow-2xl text-xl group transition-all duration-300 border-2 border-white/20 hover:border-white/40"
+                  className="bg-white text-gray-900 hover:bg-gray-50 font-bold px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-6 rounded-xl sm:rounded-2xl shadow-2xl text-base sm:text-lg md:text-xl group transition-all duration-300 border-2 border-white/20 hover:border-white/40 w-full sm:w-auto"
                 >
-                    <Rocket className="mr-3 h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
+                    <Rocket className="mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 group-hover:rotate-12 transition-transform duration-300" />
                     {user ? 'Go to Profile' : 'Start Your Journey'}
-                    <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
+                    <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 group-hover:translate-x-2 transition-transform duration-300" />
                   </Button>
                 </motion.div>
                 
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full sm:w-auto"
                 >
                   <Button 
                     variant="outline"
                     size="lg"
-                    className="border-2 border-white text-white hover:bg-white hover:text-primary font-bold px-8 py-6 rounded-2xl text-lg backdrop-blur-sm transition-all duration-300 shadow-lg [text-shadow:_0_1px_2px_rgb(0_0_0_/_80%)]"
+                    className="border-2 border-white text-white hover:bg-white hover:text-primary font-bold px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-6 rounded-xl sm:rounded-2xl text-sm sm:text-base md:text-lg backdrop-blur-sm transition-all duration-300 shadow-lg [text-shadow:_0_1px_2px_rgb(0_0_0_/_80%)] w-full sm:w-auto"
                   >
-                    <Play className="mr-2 h-5 w-5" />
+                    <Play className="mr-2 h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
                     Watch Demo
                 </Button>
                 </motion.div>
@@ -471,23 +471,23 @@ const Index = () => {
 
         {/* Features Section */}
         <div className="relative z-10 bg-background/95 backdrop-blur-sm">
-          <div className="container mx-auto px-4 py-24">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
             <motion.div
               initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-12 sm:mb-16"
             >
-              <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6">
                 How It Works
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
                 Three simple steps to unlock your career potential and discover your perfect path
               </p>
             </motion.div>
             
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto px-4">
               {[
                 {
                   icon: Brain,
@@ -517,18 +517,18 @@ const Index = () => {
                   whileHover={{ y: -10, scale: 1.02 }}
                   className="group"
                 >
-                  <div className="text-center space-y-6 p-8 rounded-3xl bg-gradient-card shadow-soft hover:shadow-large transition-all duration-500 border border-border/50">
+                  <div className="text-center space-y-4 sm:space-y-6 p-6 sm:p-8 rounded-3xl bg-gradient-card shadow-soft hover:shadow-large transition-all duration-500 border border-border/50">
                     <motion.div
                       whileHover={{ rotate: 360, scale: 1.1 }}
                       transition={{ duration: 0.6 }}
-                      className={`w-20 h-20 bg-gradient-to-r ${feature.color} rounded-3xl flex items-center justify-center mx-auto shadow-lg`}
+                      className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r ${feature.color} rounded-3xl flex items-center justify-center mx-auto shadow-lg`}
                     >
-                      <feature.icon className="h-10 w-10 text-white" />
+                      <feature.icon className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
                     </motion.div>
-                    <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                    <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
                       {feature.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed text-lg">
+                    <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                       {feature.description}
                     </p>
                   </div>
@@ -540,19 +540,19 @@ const Index = () => {
         </div>
 
         {/* Our Mission and About Us Section */}
-        <div className="relative bg-background py-24">
-          <div className="container mx-auto px-4">
+        <div className="relative bg-background py-16 sm:py-20 lg:py-24">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-12 sm:mb-16"
             >
-              <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6">
                 Our Mission
               </h2>
-              <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4">
                 Our mission is to help confused students find clarity, confidence, and direction in their career journey. Instead of running to multiple websites, counselors, and chatbots, we provide a one-stop AI-powered advisor that delivers everything in one place—career roadmaps, job trends, skill mapping, resume and LinkedIn support, higher studies guidance, and soft skills training.
 
 We aim to bridge the gap between students and the evolving job market by offering personalized, actionable, and future-ready guidance.
@@ -565,17 +565,17 @@ We aim to bridge the gap between students and the evolving job market by offerin
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center mb-8 sm:mb-12"
             >
-              <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
                 Meet Our Team
               </h3>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
                 Built by passionate students from Maharaja Agrasen Institute of Technology
               </p>
             </motion.div>
             
-            <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 sm:gap-8 max-w-7xl mx-auto px-4">
               {[
                 {
                   name: "Divyaansh",
@@ -622,19 +622,19 @@ We aim to bridge the gap between students and the evolving job market by offerin
                   whileHover={{ y: -5 }}
                   className="group"
                 >
-                  <div className="bg-gradient-card rounded-3xl p-8 shadow-soft hover:shadow-medium transition-all duration-300 border border-border/50 h-full">
-                    <div className="flex flex-col items-center text-center space-y-4">
-                      <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center">
-                        <span className="text-white font-bold text-2xl">
+                  <div className="bg-gradient-card rounded-3xl p-6 sm:p-8 shadow-soft hover:shadow-medium transition-all duration-300 border border-border/50 h-full">
+                    <div className="flex flex-col items-center text-center space-y-3 sm:space-y-4">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-primary rounded-full flex items-center justify-center">
+                        <span className="text-white font-bold text-xl sm:text-2xl">
                           {member.initials}
                         </span>
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold text-foreground mb-1">{member.name}</h4>
-                        <p className="text-primary font-semibold mb-2">{member.role}</p>
-                        <p className="text-sm text-muted-foreground mb-4">{member.education}</p>
+                        <h4 className="text-lg sm:text-xl font-bold text-foreground mb-1">{member.name}</h4>
+                        <p className="text-primary font-semibold mb-2 text-sm sm:text-base">{member.role}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">{member.education}</p>
                       </div>
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xs sm:text-sm">
                         {member.description}
                       </p>
                     </div>
@@ -646,10 +646,10 @@ We aim to bridge the gap between students and the evolving job market by offerin
         </div>
 
         {/* CTA Section */}
-        <div className="relative bg-gradient-hero py-24 overflow-hidden">
+        <div className="relative bg-gradient-hero py-16 sm:py-20 lg:py-24 overflow-hidden">
           <div className="absolute inset-0">
             <motion.div
-              className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"
+              className="absolute top-10 left-10 w-48 h-48 sm:w-64 sm:h-64 bg-white/10 rounded-full blur-3xl"
               animate={{
                 x: [0, 50, 0],
                 y: [0, -30, 0],
@@ -662,7 +662,7 @@ We aim to bridge the gap between students and the evolving job market by offerin
               }}
             />
             <motion.div
-              className="absolute bottom-10 right-10 w-80 h-80 bg-white/10 rounded-full blur-3xl"
+              className="absolute bottom-10 right-10 w-60 h-60 sm:w-80 sm:h-80 bg-white/10 rounded-full blur-3xl"
               animate={{
                 x: [0, -50, 0],
                 y: [0, 30, 0],
@@ -676,7 +676,7 @@ We aim to bridge the gap between students and the evolving job market by offerin
             />
           </div>
           
-          <div className="container mx-auto px-4 relative z-10">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div
               initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -684,10 +684,10 @@ We aim to bridge the gap between students and the evolving job market by offerin
               viewport={{ once: true }}
               className="text-center max-w-4xl mx-auto"
             >
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
                 Ready to Transform Your Career?
               </h2>
-              <p className="text-xl md:text-2xl text-white/80 mb-12 leading-relaxed">
+              <p className="text-lg sm:text-xl md:text-2xl text-white/80 mb-8 sm:mb-12 leading-relaxed px-4">
                 Join thousands of professionals who have discovered their perfect career path. 
                 Start your journey today and unlock your potential.
               </p>
@@ -702,15 +702,16 @@ We aim to bridge the gap between students and the evolving job market by offerin
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto"
                 >
                   <Button 
                     size="lg"
                     onClick={() => setCurrentStep('skills')}
-                    className="bg-white text-gray-900 hover:bg-gray-50 font-bold px-12 py-6 rounded-2xl shadow-2xl text-xl group transition-all duration-300"
+                    className="bg-white text-gray-900 hover:bg-gray-50 font-bold px-8 sm:px-12 py-4 sm:py-6 rounded-2xl shadow-2xl text-lg sm:text-xl group transition-all duration-300 w-full sm:w-auto"
                   >
-                    <Rocket className="mr-3 h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
+                    <Rocket className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6 group-hover:rotate-12 transition-transform duration-300" />
                     Get Started Now
-                    <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
+                    <ArrowRight className="ml-2 sm:ml-3 h-5 w-5 sm:h-6 sm:w-6 group-hover:translate-x-2 transition-transform duration-300" />
                   </Button>
                 </motion.div>
               </motion.div>
@@ -724,40 +725,36 @@ We aim to bridge the gap between students and the evolving job market by offerin
   // Skills Input Screen
   if (currentStep === 'skills') {
     return (
-      <div className="min-h-screen bg-background py-8 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-8">
+      <div className="min-h-screen bg-background py-4 sm:py-8 px-2 sm:px-4">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-6 sm:mb-8">
             <div className="flex items-center justify-between mb-4">
               <Button 
                 variant="ghost" 
                 onClick={handleStartOver}
-                className="text-muted-foreground hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground text-xs sm:text-sm p-2 sm:p-3"
               >
                 ← Back to Home
               </Button>
-              <div className="flex items-center gap-4">
-                <Link to="/news" className="text-sm text-muted-foreground hover:text-foreground">
-                  Job News
+              <div className="flex items-center gap-2 sm:gap-4 text-xs overflow-x-auto">
+                <Link to="/news" className="text-muted-foreground hover:text-foreground whitespace-nowrap">
+                  <span className="hidden sm:inline">Job News</span>
+                  <span className="sm:hidden">News</span>
                 </Link>
-                <Link to="/insights" className="text-sm text-muted-foreground hover:text-foreground">
+                <span className="text-muted-foreground hidden sm:inline">•</span>
+                <Link to="/insights" className="text-muted-foreground hover:text-foreground whitespace-nowrap">
                   Insights
                 </Link>
                 {user && (
-                  <Link to="/profile" className="text-sm text-muted-foreground hover:text-foreground">
-                    Profile
-                  </Link>
+                  <>
+                    <span className="text-muted-foreground hidden sm:inline">•</span>
+                    <Link to="/profile" className="text-muted-foreground hover:text-foreground whitespace-nowrap">
+                      Profile
+                    </Link>
+                  </>
                 )}
                 <ModeToggle />
               </div>
-            </div>
-            <div className="flex items-center justify-center gap-4">
-              <Link to="/" className="text-sm text-muted-foreground hover:text-foreground">Home</Link>
-              <span className="text-muted-foreground">•</span>
-              <Link to="/news" className="text-sm text-muted-foreground hover:text-foreground">Job News</Link>
-              <span className="text-muted-foreground">•</span>
-              <Link to="/insights" className="text-sm text-muted-foreground hover:text-foreground">Insights</Link>
-              <span className="text-muted-foreground">•</span>
-              <Link to="/linkedin" className="text-sm text-muted-foreground hover:text-foreground">LinkedIn Analyzer</Link>
             </div>
           </div>
           
@@ -773,48 +770,41 @@ We aim to bridge the gap between students and the evolving job market by offerin
 
   // Recommendations Screen
   return (
-    <div className="min-h-screen bg-background py-8 px-4">
-      <div className="container mx-auto">
-        <div className="text-center mb-8">
+    <div className="min-h-screen bg-background py-4 sm:py-8 px-2 sm:px-4">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-6 sm:mb-8">
           <div className="flex items-center justify-between mb-4">
-            <div className="flex gap-2">
+            <div className="flex gap-1 sm:gap-2">
               <Button 
                 variant="ghost" 
                 onClick={() => setCurrentStep('skills')}
-                className="text-muted-foreground hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground text-xs sm:text-sm p-2"
               >
                 ← Edit Skills
               </Button>
               <Button 
                 variant="outline" 
                 onClick={handleStartOver}
+                className="text-xs sm:text-sm px-2 py-1 sm:px-4 sm:py-2"
               >
                 Start Over
               </Button>
             </div>
-            <div className="flex items-center gap-4">
-              <Link to="/news" className="text-sm text-muted-foreground hover:text-foreground">
-                Job News
+            <div className="flex items-center gap-1 sm:gap-4 text-xs overflow-x-auto">
+              <Link to="/news" className="text-muted-foreground hover:text-foreground whitespace-nowrap">
+                <span className="hidden sm:inline">Job News</span>
+                <span className="sm:hidden">News</span>
               </Link>
-              <Link to="/insights" className="text-sm text-muted-foreground hover:text-foreground">
+              <Link to="/insights" className="text-muted-foreground hover:text-foreground whitespace-nowrap">
                 Insights
               </Link>
               {user && (
-                <Link to="/profile" className="text-sm text-muted-foreground hover:text-foreground">
+                <Link to="/profile" className="text-muted-foreground hover:text-foreground whitespace-nowrap">
                   Profile
                 </Link>
               )}
               <ModeToggle />
             </div>
-          </div>
-          <div className="mt-2 flex items-center justify-center gap-4">
-            <Link to="/" className="text-sm text-muted-foreground hover:text-foreground">Home</Link>
-            <span className="text-muted-foreground">•</span>
-            <Link to="/news" className="text-sm text-muted-foreground hover:text-foreground">Job News</Link>
-            <span className="text-muted-foreground">•</span>
-            <Link to="/insights" className="text-sm text-muted-foreground hover:text-foreground">Insights</Link>
-            <span className="text-muted-foreground">•</span>
-            <Link to="/linkedin" className="text-sm text-muted-foreground hover:text-foreground">LinkedIn Analyzer</Link>
           </div>
         </div>
 
