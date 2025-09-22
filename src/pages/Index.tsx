@@ -213,13 +213,13 @@ const Index = () => {
     return (
       <div className="min-h-screen bg-gradient-hero relative overflow-hidden">
         {/* Animated Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none">
           <motion.div
-            className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl"
+            className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 h-48 sm:w-72 sm:h-72 bg-primary/20 rounded-full blur-3xl"
             animate={{
-              x: [0, 100, 0],
-              y: [0, -50, 0],
-              scale: [1, 1.2, 1],
+              x: [0, 50, 0],
+              y: [0, -25, 0],
+              scale: [1, 1.1, 1],
             }}
             transition={{
               duration: 20,
@@ -228,10 +228,10 @@ const Index = () => {
             }}
           />
           <motion.div
-            className="absolute bottom-20 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl"
+            className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 bg-accent/20 rounded-full blur-3xl"
             animate={{
-              x: [0, -100, 0],
-              y: [0, 50, 0],
+              x: [0, -50, 0],
+              y: [0, 25, 0],
               scale: [1, 0.8, 1],
             }}
             transition={{
@@ -241,10 +241,10 @@ const Index = () => {
             }}
           />
           <motion.div
-            className="absolute top-1/2 left-1/2 w-64 h-64 bg-white/10 rounded-full blur-2xl"
+            className="absolute top-1/2 left-1/2 w-32 h-32 sm:w-64 sm:h-64 bg-white/10 rounded-full blur-2xl"
             animate={{
               rotate: 360,
-              scale: [1, 1.1, 1],
+              scale: [1, 1.05, 1],
             }}
             transition={{
               duration: 30,
@@ -255,16 +255,16 @@ const Index = () => {
         </div>
 
         {/* Floating Particles */}
-        {[...Array(20)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-white/30 rounded-full pointer-events-none"
+            className="absolute w-1 h-1 sm:w-2 sm:h-2 bg-white/30 rounded-full pointer-events-none"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
             animate={{
-              y: [0, -100, 0],
+              y: [0, -50, 0],
               opacity: [0, 1, 0],
             }}
             transition={{
@@ -334,22 +334,22 @@ const Index = () => {
 
         {/* Hero Section */}
         <div className="relative z-10">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 min-h-screen flex items-center">
-            <div className="text-center space-y-8 sm:space-y-10 lg:space-y-12 max-w-6xl mx-auto w-full">
+          <div className="container mx-auto px-3 sm:px-4 lg:px-8 py-8 sm:py-12 lg:py-16 xl:py-20 min-h-screen flex items-center">
+            <div className="text-center space-y-6 sm:space-y-8 lg:space-y-10 xl:space-y-12 max-w-6xl mx-auto w-full">
               {/* Badge */}
               <motion.div
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white/10 backdrop-blur-md rounded-full text-white/90 text-xs sm:text-sm font-medium border border-white/20"
+                className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 lg:py-3 bg-white/10 backdrop-blur-md rounded-full text-white/90 text-xs sm:text-sm font-medium border border-white/20"
               >
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                 >
-                <Sparkles className="h-4 w-4" />
+                <Sparkles className="h-3 w-3 sm:h-4 sm:w-4" />
                 </motion.div>
-                <span className="iron-font iron-font-white" data-text="HORIZON">HORIZON</span> - AI Career Discovery
+                <span className="iron-font iron-font-white whitespace-nowrap" data-text="HORIZON">HORIZON</span> - AI Career Discovery
               </motion.div>
               
               {/* Main Heading */}
@@ -357,14 +357,14 @@ const Index = () => {
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="space-y-4 sm:space-y-6"
+                className="space-y-3 sm:space-y-4 lg:space-y-6"
               >
-                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.1] sm:leading-tight">
+                <h1 className="font-bold text-white leading-[0.9] sm:leading-[0.95] lg:leading-tight">
                   <motion.span
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.6 }}
-                    className="block iron-font iron-font-hero text-2xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl"
+                    className="block iron-font iron-font-hero text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl"
                     data-text="HORIZON"
                   >
                     HORIZON
@@ -373,7 +373,7 @@ const Index = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.8 }}
-                    className="block text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl"
+                    className="block text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl"
                   >
                 Discover Your
                   </motion.span>
@@ -381,7 +381,7 @@ const Index = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 1.0 }}
-                    className="block bg-gradient-to-r from-purple-200 via-pink-200 to-white bg-clip-text text-transparent text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl"
+                    className="block bg-gradient-to-r from-purple-200 via-pink-200 to-white bg-clip-text text-transparent text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl"
                   >
                     Perfect Career
                   </motion.span>
@@ -393,7 +393,7 @@ const Index = () => {
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 1.2 }}
-                className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 leading-relaxed max-w-4xl mx-auto font-light px-2 sm:px-4"
+                className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 leading-relaxed max-w-4xl mx-auto font-light px-3 sm:px-4"
               >
                 Your AI-powered career discovery platform. Map your skills, explore opportunities, 
                 and get personalized recommendations to navigate your professional journey with confidence.
@@ -404,7 +404,7 @@ const Index = () => {
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 1.4 }}
-                className="flex flex-col gap-3 sm:gap-4 justify-center items-stretch sm:items-center pt-4 sm:pt-6 px-2 sm:px-4 max-w-md sm:max-w-none mx-auto"
+                className="flex flex-col gap-3 sm:gap-4 justify-center items-center pt-4 sm:pt-6 lg:pt-8 px-3 sm:px-4 max-w-sm sm:max-w-md lg:max-w-none mx-auto"
               >
                 <motion.div
                   whileHover={{ scale: 1.02 }}
@@ -420,11 +420,11 @@ const Index = () => {
                       setCurrentStep('skills');
                     }
                   }}
-                  className="bg-white text-gray-900 hover:bg-gray-50 font-bold px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-6 rounded-xl sm:rounded-2xl shadow-2xl text-base sm:text-lg md:text-xl group transition-all duration-300 border-2 border-white/20 hover:border-white/40 w-full sm:w-auto"
+                  className="bg-white text-gray-900 hover:bg-gray-50 font-bold px-4 sm:px-6 lg:px-8 xl:px-12 py-3 sm:py-4 lg:py-6 rounded-xl lg:rounded-2xl shadow-2xl text-sm sm:text-base lg:text-lg xl:text-xl group transition-all duration-300 border-2 border-white/20 hover:border-white/40 w-full sm:w-auto min-h-[44px] sm:min-h-[48px]"
                 >
-                    <Rocket className="mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 group-hover:rotate-12 transition-transform duration-300" />
-                    {user ? 'Go to Profile' : 'Start Your Journey'}
-                    <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 group-hover:translate-x-2 transition-transform duration-300" />
+                    <Rocket className="mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
+                    <span className="truncate">{user ? 'Go to Profile' : 'Start Your Journey'}</span>
+                    <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0" />
                   </Button>
                 </motion.div>
                 
@@ -436,10 +436,10 @@ const Index = () => {
                   <Button 
                     variant="outline"
                     size="lg"
-                    className="border-2 border-white text-white hover:bg-white hover:text-primary font-bold px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-6 rounded-xl sm:rounded-2xl text-sm sm:text-base md:text-lg backdrop-blur-sm transition-all duration-300 shadow-lg [text-shadow:_0_1px_2px_rgb(0_0_0_/_80%)] w-full sm:w-auto"
+                    className="border-2 border-white text-white hover:bg-white hover:text-primary font-bold px-4 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-6 rounded-xl lg:rounded-2xl text-sm sm:text-base lg:text-lg backdrop-blur-sm transition-all duration-300 shadow-lg [text-shadow:_0_1px_2px_rgb(0_0_0_/_80%)] w-full sm:w-auto min-h-[44px] sm:min-h-[48px]"
                   >
-                    <Play className="mr-2 h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
-                    Watch Demo
+                    <Play className="mr-2 h-3 w-3 sm:h-4 sm:w-4 lg:h-5 lg:w-5 flex-shrink-0" />
+                    <span className="truncate">Watch Demo</span>
                 </Button>
                 </motion.div>
               </motion.div>
@@ -454,17 +454,17 @@ const Index = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 2 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
         >
           <motion.div
-            animate={{ y: [0, 10, 0] }}
+            animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center"
+            className="w-4 h-6 sm:w-6 sm:h-10 border-2 border-white/50 rounded-full flex justify-center"
           >
             <motion.div
-              animate={{ y: [0, 12, 0] }}
+              animate={{ y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 h-3 bg-white/70 rounded-full mt-2"
+              className="w-0.5 h-2 sm:w-1 sm:h-3 bg-white/70 rounded-full mt-1 sm:mt-2"
             />
           </motion.div>
         </motion.div>
