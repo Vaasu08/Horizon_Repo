@@ -144,7 +144,7 @@ Constraints:
 - Keep tone authentic and outcome-focused
 - Use simple language and active voice`;
 
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -152,10 +152,18 @@ Constraints:
           generationConfig: { temperature: 0.7, topP: 0.9 }
         })
       });
-      if (!res.ok) throw new Error('Gemini request failed');
+      if (!res.ok) {
+        const errorText = await res.text();
+        console.error('Gemini API Error:', errorText);
+        throw new Error('Gemini request failed');
+      }
       const data = await res.json();
+      console.log('Full Gemini response:', data);
       const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-      if (!text) throw new Error('No content returned by Gemini');
+      if (!text) {
+        console.error('No content in response:', data);
+        throw new Error('No content returned by Gemini');
+      }
       setRecommended(text.trim());
       toast.success('Recommended About generated');
     } catch (e) {

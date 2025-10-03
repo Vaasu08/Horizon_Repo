@@ -126,6 +126,24 @@ export class ChatbotService {
       throw new Error('VITE_GEMINI_API_KEY is required');
     }
     this.apiKey = apiKey;
+    console.log('ChatbotService initialized with API key:', apiKey.substring(0, 10) + '...');
+  }
+
+  // Test API key validity
+  async testApiKey(): Promise<boolean> {
+    try {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${this.apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: 'Hello' }] }]
+        })
+      });
+      return res.ok;
+    } catch (error) {
+      console.error('API key test failed:', error);
+      return false;
+    }
   }
 
   async processMessage(message: string): Promise<string> {
@@ -155,7 +173,7 @@ Provide a helpful and conversational response:`;
       console.log('Sending prompt to Gemini:', prompt.substring(0, 200) + '...');
       
       // Use direct fetch like LinkedIn Analyzer
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${this.apiKey}`, {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${this.apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -165,13 +183,18 @@ Provide a helpful and conversational response:`;
       });
 
       if (!res.ok) {
+        const errorText = await res.text();
+        console.error('Gemini API Error:', errorText);
         throw new Error(`Gemini request failed: ${res.status} ${res.statusText}`);
       }
 
       const data = await res.json();
+      console.log('Full Gemini response:', data);
+      
       const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
       
       if (!text) {
+        console.error('No content in response:', data);
         throw new Error('No content returned by Gemini');
       }
       
